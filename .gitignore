@@ -1,0 +1,33 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Python compiled
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Logs
+# logs/ (Uncomment jika tidak ingin push log, namun kita akan push folder structure-nya)
+*.log
+
+# Models
+# Jika model (.keras) terlalu besar, uncomment di bawah ini:
+# models/*.keras
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
