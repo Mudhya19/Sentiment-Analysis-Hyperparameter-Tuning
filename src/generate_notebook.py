@@ -1283,9 +1283,9 @@ def build_notebook() -> nbf.NotebookNode:
     # BAB 6.7: ANALISIS NARATIF OTOMATIS
     # ══════════════════════════════════════════════════════════════
     cells.append(md(
-        "## 6.7 Analisis Naratif Otomatis\n\n"
-        "Bagian ini secara otomatis mengekstrak wawasan dari hasil eksperimen Optuna "
-        "dan Test Set untuk membantu Anda menyusun Laporan PDF pada **Rubrik 5 (Analisis Hasil Tuning)**.\n"
+        "## 6.7 Analisis & Kesimpulan\n\n"
+        "Bagian ini mengekstrak wawasan dari hasil eksperimen Optuna "
+        "dan Test Set sebagai dasar penyusunan **Laporan Akhir**.\n"
     ))
 
     cells.append(code(
@@ -1300,7 +1300,7 @@ def build_notebook() -> nbf.NotebookNode:
         "best_f1 = best_overall_row['Test F1-Score']\n"
         "\n"
         "analisis_md = f\"\"\"\n"
-        "### 💡 Draft Analisis & Kesimpulan (Rubrik 5)\n"
+        "### 💡 Poin-poin Analisis\n"
         "\n"
         "**1. Kombinasi Hyperparameter Terbaik:**\n"
         "Berdasarkan evaluasi akhir pada Test Set, arsitektur terbaik adalah **{best_arch}** "
@@ -1330,7 +1330,7 @@ def build_notebook() -> nbf.NotebookNode:
         "perbedaannya bisa jadi sangat tipis. Arsitektur {best_arch} terbukti paling efektif "
         "menggali fitur semantik pada dataset spesifik ini.\n"
         "\n"
-        "**4. Kendala Eksperimen (Saran untuk ditambahkan di laporan):**\n"
+        "**4. Kendala Eksperimen:**\n"
         "- **Waktu Komputasi**: Penggunaan hyperparameter tuning dengan Optuna memerlukan iterasi model yang banyak. "
         "Tanpa akselerasi GPU, proses ini memakan waktu yang signifikan. Ini adalah *trade-off* "
         "antara pencarian model optimal dengan *cost* komputasi.\n"
@@ -1338,7 +1338,7 @@ def build_notebook() -> nbf.NotebookNode:
         "vocabulary membesar. Meskipun tokenisasi sudah dilakukan, ada banyak *Out-Of-Vocabulary* (OOV) "
         "kata di data uji yang menjadi tantangan tersendiri.\n"
         "\n"
-        "**5. Kesimpulan (Untuk Rubrik Kesimpulan):**\n"
+        "**5. Kesimpulan:**\n"
         "1. Pendekatan *Hyperparameter Tuning* dengan Optuna TPE jauh lebih efisien menemukan titik optimal dibanding *Grid Search* manual.\n"
         "2. {best_arch} terpilih sebagai model andalan dengan F1-Score {best_f1:.4f} pada test-set yang benar-benar tidak pernah dilihat saat tuning.\n"
         "3. Tuning pada hyperparameter krusial (Dropout & Learning Rate) terbukti mencegah *overfitting* yang sering terjadi pada model Deep Learning teks.\n"
@@ -1351,7 +1351,7 @@ def build_notebook() -> nbf.NotebookNode:
     # ══════════════════════════════════════════════════════════════
     cells.append(md(
         "---\n"
-        "# Bab 7: Ringkasan & Catatan\n\n"
+        "# Bab 7: Referensi & Struktur Laporan Akhir\n\n"
         "## 7.1 Ringkasan Eksperimen\n\n"
         "| Aspek | Detail |\n"
         "|:------|:-------|\n"
@@ -1364,18 +1364,14 @@ def build_notebook() -> nbf.NotebookNode:
         "| **Validasi** | Train 70% / Val 15% / Test 15% (stratified) |\n"
         "| **Metrik Optimasi** | Macro F1-Score |\n"
         "| **Reproduksibilitas** | SEED = 42 |\n\n"
-        "## 7.2 Kelengkapan Dokumen Akhir (Laporan PDF)\n\n"
-        "Sebagai pelengkap dari keseluruhan proses pemodelan di atas, tahap akhir "
-        "dari eksperimen ini adalah penyusunan laporan tertulis dengan struktur berikut:\n\n"
-        "1. **Analisis & Pembahasan** – Menjelaskan alasan keunggulan kombinasi "
-        "hyperparameter terbaik. Membahas pengaruh learning rate, batch size, dan "
-        "hidden units terhadap performa model berdasarkan grafik Optuna "
-        "(Parameter Importance dan Slice Plot).\n"
-        "2. **Kesimpulan** – Merangkum temuan utama dari seluruh rangkaian eksperimen.\n"
-        "3. **Referensi** – Mencantumkan sumber dataset, spesifikasi pustaka, dan "
-        "referensi ilmiah terkait.\n\n"
-        "> **Seluruh aset visual dan grafik eksperimen dapat diakses secara langsung "
-        "pada direktori `../images/output/` untuk disematkan ke dalam laporan.**\n"
+        "## 7.2 Struktur Laporan Analisis\n\n"
+        "Laporan akhir disusun berdasarkan hasil eksperimen di atas dengan format berikut:\n\n"
+        "1. **Analisis & Pembahasan** – Membahas faktor yang membuat kombinasi hyperparameter terbaik menjadi unggul. "
+        "Termasuk menganalisis pengaruh learning rate, batch size, dan hidden units terhadap performa "
+        "berdasarkan grafik Optuna (Parameter Importance dan Slice Plot).\n"
+        "2. **Kesimpulan** – Merangkum temuan utama dari seluruh rangkaian iterasi model.\n"
+        "3. **Referensi** – Menuliskan sumber dataset, pustaka algoritma (TensorFlow, Optuna), dan literatur terkait.\n\n"
+        "> Seluruh grafik pendukung analisis dapat diakses pada direktori `../images/output/`.\n"
     ))
 
     cells.append(code(
